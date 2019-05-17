@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="Definitions_1r2ihjk" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="3.1.1">
+  <decision id="firstCommunication" name="firstCommunication">
+    <decisionTable id="decisionTable_1" hitPolicy="COLLECT" aggregation="SUM">
+      <input id="input_1" label="firstCommunication" camunda:inputVariable="lesson.firstCommunication">
+        <inputExpression id="inputExpression_1" typeRef="boolean">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0fnrljk" label="failedAssignation" camunda:inputVariable="lesson.failedAssignation">
+        <inputExpression id="LiteralExpression_07gters" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_114a400" label="haveAgreement" camunda:inputVariable="lesson.haveAgreement">
+        <inputExpression id="LiteralExpression_0isxg16" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="output_1" label="Coef" name="Coef" typeRef="double" />
+      <rule id="DecisionRule_0c94msv">
+        <inputEntry id="UnaryTests_1j1ecy1">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fuiq1q">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nrjvjk">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1i32yyd">
+          <text>1</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0vdte5t">
+        <inputEntry id="UnaryTests_1grmpo1">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12k6lub">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1oiqvs9">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0kbeweq">
+          <text>1</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0c0qoue">
+        <inputEntry id="UnaryTests_0we4sux">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uno4nn">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13wrifg">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ksto84">
+          <text>2</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_08b0nc6">
+        <inputEntry id="UnaryTests_1hct2ue">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uc8cl4">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12mcn0z">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_05iy6al">
+          <text>2</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0djejbx">
+        <inputEntry id="UnaryTests_05pvxi6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08q4rgg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yvnnbe">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_133od2h">
+          <text>3</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0w8zo32">
+        <inputEntry id="UnaryTests_086tui3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rcpds8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07wo3ay">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cwpaig">
+          <text>3</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

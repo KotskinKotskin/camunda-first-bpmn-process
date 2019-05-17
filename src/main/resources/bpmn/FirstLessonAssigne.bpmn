@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0h9hf6z" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.13.1">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0h9hf6z" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.1.1">
   <bpmn:collaboration id="Collaboration_0m3tyk0">
     <bpmn:participant id="FirstLessonAssigne" name="Назначение первого урока" processRef="FirstLessonAsignee" />
   </bpmn:collaboration>
@@ -21,7 +21,7 @@
       <bpmn:outgoing>SequenceFlow_1it54t9</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="SequenceFlow_0fiwg3k" sourceRef="StartEvent" targetRef="Task_1s0f249" />
-    <bpmn:businessRuleTask id="firstCommunication" name="firstCommunication" camunda:resultVariable="coef1" camunda:decisionRef="firstCommunication" camunda:mapDecisionResult="singleEntry">
+    <bpmn:businessRuleTask id="firstCommunication" name="firstCommunication" camunda:resultVariable="coef" camunda:decisionRef="firstCommunication" camunda:mapDecisionResult="singleEntry">
       <bpmn:incoming>SequenceFlow_1it54t9</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_16dq05i</bpmn:outgoing>
     </bpmn:businessRuleTask>
