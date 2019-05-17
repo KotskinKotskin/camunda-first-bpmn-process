@@ -7,71 +7,68 @@
     <bpmn:startEvent id="StartEvent">
       <bpmn:outgoing>SequenceFlow_0fiwg3k</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:endEvent id="EndEvent_0ybtrgr">
-      <bpmn:incoming>SequenceFlow_1fe747e</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:serviceTask id="Task_0t9h01l" name="Назначить урок" camunda:type="external" camunda:topic="asigneeLesson">
-      <bpmn:incoming>SequenceFlow_16dq05i</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1fe747e</bpmn:outgoing>
-    </bpmn:serviceTask>
-    <bpmn:sequenceFlow id="SequenceFlow_1fe747e" sourceRef="Task_0t9h01l" targetRef="EndEvent_0ybtrgr" />
-    <bpmn:sequenceFlow id="SequenceFlow_16dq05i" sourceRef="firstCommunication" targetRef="Task_0t9h01l" />
     <bpmn:serviceTask id="Task_1s0f249" name="Создать урок" camunda:asyncBefore="true" camunda:class="bpmn2.storm.backend.delegate.PreDecisionDelegate">
       <bpmn:incoming>SequenceFlow_0fiwg3k</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1it54t9</bpmn:outgoing>
     </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_1it54t9" sourceRef="Task_1s0f249" targetRef="Task_0s3g44t" />
     <bpmn:sequenceFlow id="SequenceFlow_0fiwg3k" sourceRef="StartEvent" targetRef="Task_1s0f249" />
-    <bpmn:businessRuleTask id="firstCommunication" name="firstCommunication" camunda:resultVariable="coef" camunda:decisionRef="firstCommunication" camunda:mapDecisionResult="singleEntry">
+    <bpmn:sequenceFlow id="SequenceFlow_1fe747e" sourceRef="Task_0t9h01l" targetRef="EndEvent_0ybtrgr" />
+    <bpmn:endEvent id="EndEvent_0ybtrgr">
+      <bpmn:incoming>SequenceFlow_1fe747e</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="Task_0t9h01l" name="Назначить урок" camunda:type="external" camunda:topic="asigneeLesson">
+      <bpmn:incoming>SequenceFlow_13w4yyb</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1fe747e</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_13w4yyb" sourceRef="Task_0s3g44t" targetRef="Task_0t9h01l" />
+    <bpmn:businessRuleTask id="Task_0s3g44t" name="CalculateTaskProps" camunda:resultVariable="CalculateTaskPropsResult" camunda:decisionRef="CalculateTaskProps" camunda:mapDecisionResult="singleResult">
       <bpmn:incoming>SequenceFlow_1it54t9</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_16dq05i</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_13w4yyb</bpmn:outgoing>
     </bpmn:businessRuleTask>
-    <bpmn:sequenceFlow id="SequenceFlow_1it54t9" sourceRef="Task_1s0f249" targetRef="firstCommunication" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0m3tyk0">
       <bpmndi:BPMNShape id="Participant_1a6om01_di" bpmnElement="FirstLessonAssigne" isHorizontal="true">
-        <dc:Bounds x="180" y="81" width="1047" height="431" />
+        <dc:Bounds x="156" y="108" width="1047" height="431" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_0slljo0_di" bpmnElement="Task_0t9h01l">
-        <dc:Bounds x="721" y="241" width="100" height="80" />
+        <dc:Bounds x="789" y="268" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent">
-        <dc:Bounds x="231" y="263" width="36" height="36" />
+        <dc:Bounds x="207" y="290" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1fe747e_di" bpmnElement="SequenceFlow_1fe747e">
-        <di:waypoint x="821" y="281" />
-        <di:waypoint x="889" y="281" />
+        <di:waypoint x="889" y="308" />
+        <di:waypoint x="946" y="308" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_0ybtrgr_di" bpmnElement="EndEvent_0ybtrgr">
-        <dc:Bounds x="889" y="263" width="36" height="36" />
+        <dc:Bounds x="946" y="290" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BusinessRuleTask_1gn3na2_di" bpmnElement="firstCommunication">
-        <dc:Bounds x="487" y="241" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_16dq05i_di" bpmnElement="SequenceFlow_16dq05i">
-        <di:waypoint x="587" y="281" />
-        <di:waypoint x="721" y="281" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="609" y="256" width="90" height="20" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_0h2td9y_di" bpmnElement="Task_1s0f249">
-        <dc:Bounds x="312" y="241" width="100" height="80" />
+        <dc:Bounds x="288" y="268" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0fiwg3k_di" bpmnElement="SequenceFlow_0fiwg3k">
-        <di:waypoint x="267" y="281" />
-        <di:waypoint x="312" y="281" />
+        <di:waypoint x="243" y="308" />
+        <di:waypoint x="288" y="308" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="245" y="256" width="90" height="20" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1it54t9_di" bpmnElement="SequenceFlow_1it54t9">
-        <di:waypoint x="412" y="281" />
-        <di:waypoint x="487" y="281" />
+        <di:waypoint x="388" y="308" />
+        <di:waypoint x="464" y="308" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="449.5" y="260" width="0" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_13w4yyb_di" bpmnElement="SequenceFlow_13w4yyb">
+        <di:waypoint x="564" y="308" />
+        <di:waypoint x="789" y="308" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="BusinessRuleTask_0lx10t6_di" bpmnElement="Task_0s3g44t">
+        <dc:Bounds x="464" y="268" width="100" height="80" />
+      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

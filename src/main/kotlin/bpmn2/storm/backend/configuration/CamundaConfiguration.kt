@@ -7,6 +7,9 @@ import org.springframework.web.cors.CorsConfiguration
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 import org.springframework.web.filter.CorsFilter
 
+import org.camunda.bpm.engine.impl.cfg.ProcessEnginePlugin
+
+
 @Configuration
 class CamundaConfiguration {
 
