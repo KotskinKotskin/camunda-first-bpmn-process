@@ -115,7 +115,32 @@ class DecisionTests : CamundaBpmApiAwareTestCase() {
     }
 
 
-    fun readInputParameter(csvName: String): CSVParser {
+    @Deployment(resources = [
+        "dmn/checkResult.dmn"
+    ])
+    @Test
+    fun testCheckResult() {
+        var csvRecords = readInputParameter("testCheckResult.csv")
+        var decisionTable = processEngineRule.decisionService.evaluateDecisionTableByKey("checkResult")
+
+        for (item in csvRecords) {
+            var lesson = LessonRequest().also {
+                it.recallCount = item.get("in.lesson.recallCount").toInt()
+                it.nonAnswerCount = item.get("in.lesson.nonAnswerCount").toInt()
+
+            }
+            var taskResult = item.get("in.taskResult")
+
+            var variables = putValue("lesson", lesson).putValue("taskResult", taskResult)
+
+            var exceptedResult = item.get("out.nextOperation")
+            var result = decisionTable.variables(variables).evaluate().singleResult["nextOperation"] as String
+
+            assertEquals(exceptedResult, result)
+        }
+    }
+
+    private fun readInputParameter(csvName: String): CSVParser {
         return CSVParser(BufferedReader(
             InputStreamReader(ClassPathResource("testcases/$csvName").inputStream)), CSVFormat.DEFAULT
             .withFirstRecordAsHeader()
