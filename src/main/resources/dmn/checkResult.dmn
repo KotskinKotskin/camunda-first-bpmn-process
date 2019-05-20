@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="Definitions_124odqw" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="3.1.1">
+  <decision id="checkResult" name="checkResult">
+    <decisionTable id="decisionTable_1" hitPolicy="FIRST">
+      <input id="input_1" label="taskResult" camunda:inputVariable="taskResult">
+        <inputExpression id="inputExpression_1" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1ne00yi" label="lesson.recallCount" camunda:inputVariable="lesson.recallCount">
+        <inputExpression id="LiteralExpression_0jotxbk" typeRef="double">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1bl0c89" label="lesson.recallCount" camunda:inputVariable="lesson.nonAnswerCount">
+        <inputExpression id="LiteralExpression_1dxf18v" typeRef="double">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="output_1" label="nextOperation" name="nextOperation" typeRef="string" />
+      <rule id="DecisionRule_1o4xn2w">
+        <inputEntry id="UnaryTests_0eovl8x">
+          <text>"LessonAssigned"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0h47rvj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rwvc6p">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1d90ra3">
+          <text>"Finish"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_03f4sty">
+        <inputEntry id="UnaryTests_0igdjqc">
+          <text>"Recall"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ea09he">
+          <text>&lt;=10</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lxmm2f">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1dhayj7">
+          <text>"Again"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0m5pjnq">
+        <inputEntry id="UnaryTests_0uribn9">
+          <text>"Recall"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jhjcfo">
+          <text>&gt;10</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0f5dyq8">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0uvlzs9">
+          <text>"CycleEnded"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_16njmk5">
+        <inputEntry id="UnaryTests_1i5u6nf">
+          <text>"RecallWithAgreement"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1thzeh7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lhftga">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17b1t4g">
+          <text>"Again"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0pkww3u">
+        <inputEntry id="UnaryTests_11val11">
+          <text>"NonAnswer"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rdey60">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g14m0g">
+          <text>&lt;=10</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00lvbmg">
+          <text>"Again"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0a8ja5u">
+        <inputEntry id="UnaryTests_0eszdmj">
+          <text>"NonAnswer"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1awtchu">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bebqkb">
+          <text>&gt;10</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0cxuccr">
+          <text>"CycleEnded"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1c7by6p">
+        <inputEntry id="UnaryTests_159i49s">
+          <text>"IncorrectService"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jqfs16">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0knebi1">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1st0gml">
+          <text>"IncorrectService"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

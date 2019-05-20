@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="Definitions_1r2ihjk" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="3.1.1">
+  <decision id="firstCommunication" name="Calculate commincation coef">
+    <extensionElements>
+      <biodi:bounds x="130" y="369" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="decisionTable_1" hitPolicy="COLLECT" aggregation="SUM">
+      <input id="input_1" label="firstCommunication" camunda:inputVariable="lesson.firstCommunication">
+        <inputExpression id="inputExpression_1" typeRef="boolean">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0fnrljk" label="failedAssignation" camunda:inputVariable="lesson.failedAssignation">
+        <inputExpression id="LiteralExpression_07gters" typeRef="boolean">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_114a400" label="haveAgreement" camunda:inputVariable="lesson.haveAgreement">
+        <inputExpression id="LiteralExpression_0isxg16" typeRef="boolean">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="output_1" label="Coef" name="Coef" typeRef="double" />
+      <rule id="DecisionRule_0c94msv">
+        <inputEntry id="UnaryTests_1j1ecy1">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fuiq1q">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nrjvjk">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1i32yyd">
+          <text>1*2</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0vdte5t">
+        <inputEntry id="UnaryTests_1grmpo1">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12k6lub">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1oiqvs9">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0kbeweq">
+          <text>1</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0c0qoue">
+        <inputEntry id="UnaryTests_0we4sux">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uno4nn">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13wrifg">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ksto84">
+          <text>2</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_08b0nc6">
+        <inputEntry id="UnaryTests_1hct2ue">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uc8cl4">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12mcn0z">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_05iy6al">
+          <text>2</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0djejbx">
+        <inputEntry id="UnaryTests_05pvxi6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08q4rgg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yvnnbe">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_133od2h">
+          <text>3</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0w8zo32">
+        <inputEntry id="UnaryTests_086tui3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rcpds8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07wo3ay">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cwpaig">
+          <text>3</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="calculateWeight" name="calculateWeight">
+    <extensionElements>
+      <biodi:bounds x="392" y="227" width="180" height="80" />
+      <biodi:edge source="firstCommunication">
+        <biodi:waypoints x="256" y="369" />
+        <biodi:waypoints x="408" y="307" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#firstCommunication" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_18m9fze" hitPolicy="FIRST">
+      <input id="InputClause_0p3vsfz" label="recallCount" camunda:inputVariable="lesson.recallCount">
+        <inputExpression id="LiteralExpression_0x8alc9" typeRef="integer" />
+      </input>
+      <input id="InputClause_1jblbu0" label="nonAnswerCount" camunda:inputVariable="lesson.nonAnswerCount">
+        <inputExpression id="LiteralExpression_1mphp8c" typeRef="integer">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1hjgzny" label="normalWeight" name="normalWeight" typeRef="double" />
+      <output id="OutputClause_14vtf4e" label="deadlineWeight" name="deadlineWeight" typeRef="double" />
+      <rule id="DecisionRule_0ongng4">
+        <inputEntry id="UnaryTests_03ag8x2">
+          <text>&gt;=0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rajqni">
+          <text>&gt;lesson.recallCount</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0i0yi0u">
+          <text>Coef*0.8</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16borlg">
+          <text>Coef*1.8</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1y6hemw">
+        <inputEntry id="UnaryTests_0rw1xpu">
+          <text>&gt; 0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1irj1yd">
+          <text>&lt;=lesson.recallCount</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vwdskv">
+          <text>Coef*0.9</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0n0ehwe">
+          <text>Coef*1.9</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0o9utj1">
+        <inputEntry id="UnaryTests_1wedimn">
+          <text>0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02z39lf">
+          <text>0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1aw7mym">
+          <text>Coef</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0crir4p">
+          <text>Coef*2</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0fj93n2">
+        <inputEntry id="UnaryTests_1r3c3f4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0k9jw3s">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xgkhtw">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0szecva">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="CalculateTaskProps" name="CalculateTaskProps">
+    <extensionElements>
+      <biodi:bounds x="504" y="81" width="180" height="80" />
+      <biodi:edge source="calculateWeight">
+        <biodi:waypoints x="509" y="227" />
+        <biodi:waypoints x="555" y="161" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#calculateWeight" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1cld2lr" hitPolicy="FIRST">
+      <input id="InputClause_1b031e0" label="lesson.gradation" camunda:inputVariable="lesson.gradation">
+        <inputExpression id="LiteralExpression_0aht289" typeRef="string" />
+      </input>
+      <input id="InputClause_1rga3qt" label="lesson.firstCommunication" camunda:inputVariable="lesson.firstCommunication">
+        <inputExpression id="LiteralExpression_0zyl90y" typeRef="boolean">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0i516ig" label="type" name="type" typeRef="string" />
+      <output id="OutputClause_1wv4ma4" label="poolName" name="poolName" typeRef="string" />
+      <output id="OutputClause_06xxdxx" label="normalWeight" name="normalWeight" typeRef="double" />
+      <output id="OutputClause_1ubywgt" label="deadlineWeight" name="deadlineWeight" typeRef="double" />
+      <rule id="DecisionRule_0atugnr">
+        <inputEntry id="UnaryTests_0luurgr">
+          <text>"kid","klp","adult"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ftzb52">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06emc9r">
+          <text>"IntrolessonAssignationFirstCall"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03du01e">
+          <text>"firstlineSales"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_076791x">
+          <text>normalWeight</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1p3v3bj">
+          <text>deadlineWeight</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12f42k4">
+        <inputEntry id="UnaryTests_1sa3rl3">
+          <text>"kid","klp","adult"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nfseup">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jc6h56">
+          <text>"IntrolessonAssignation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xj0j6w">
+          <text>"firstlineSales"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08f2z75">
+          <text>normalWeight</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17wqwz6">
+          <text>deadlineWeight</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
