@@ -6,7 +6,7 @@ jobs:
     working_directory: ~
     steps:
     - checkout
-    - run: mvn package
+    - run: mvn clean deploy
 workflows:
   version: 2
   build:
