@@ -6,7 +6,7 @@ jobs:
     working_directory: ~
     steps:
     - checkout
-    - run: mvn install
+    - run: mvn package
 workflows:
   version: 2
   build:
