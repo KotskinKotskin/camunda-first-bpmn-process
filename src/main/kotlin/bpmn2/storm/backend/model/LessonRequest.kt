@@ -4,7 +4,6 @@ import java.io.Serializable
 
 class LessonRequest: Serializable {
     var gradation: String = "kid"
-    var clientId: String =""
     var firstCommunication: Boolean = true
     var failedAssignation: Boolean = false
     var haveAgreement: Boolean = false
