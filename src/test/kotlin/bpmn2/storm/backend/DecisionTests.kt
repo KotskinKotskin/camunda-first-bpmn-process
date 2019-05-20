@@ -140,7 +140,7 @@ class DecisionTests : CamundaBpmApiAwareTestCase() {
         }
     }
 
-    private fun readInputParameter(csvName: String): CSVParser {
+    fun readInputParameter(csvName: String): CSVParser {
         return CSVParser(BufferedReader(
             InputStreamReader(ClassPathResource("testcases/$csvName").inputStream)), CSVFormat.DEFAULT
             .withFirstRecordAsHeader()
