@@ -8,6 +8,9 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 import org.springframework.web.filter.CorsFilter
 
 import org.camunda.bpm.engine.impl.cfg.ProcessEnginePlugin
+import org.camunda.spin.plugin.impl.SpinProcessEnginePlugin
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass
 
 
 @Configuration
@@ -27,4 +30,12 @@ class CamundaConfiguration {
         bean.setOrder(0)
         return bean
     }
+
+    @Bean
+    @ConditionalOnMissingBean(name = ["spinProcessEnginePlugin"])
+    fun spinProcessEnginePlugin(): ProcessEnginePlugin {
+        return SpinProcessEnginePlugin()
+    }
+
+
 }

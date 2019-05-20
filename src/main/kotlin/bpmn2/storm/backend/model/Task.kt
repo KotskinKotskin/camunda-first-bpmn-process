@@ -3,11 +3,13 @@ package bpmn2.storm.backend.model
 import java.io.Serializable
 
 class Task: Serializable{
-    val task: String = ""
-    val poolName: String = ""
-    val taskResult: String = ""
-    val normalWeight: Int? = null
-    val deadlineWeight: Int? = null
-
+    var type: String? = ""
+    var poolName: String? = ""
+    var taskResult: String = ""
+    var normalWeight: Double? = null
+    var deadlineWeight: Double? = null
+    companion object {
+        private const val serialVersionUID: Long = 123
+    }
 
 }

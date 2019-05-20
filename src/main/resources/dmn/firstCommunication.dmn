@@ -11,12 +11,12 @@
         </inputExpression>
       </input>
       <input id="InputClause_0fnrljk" label="failedAssignation" camunda:inputVariable="lesson.failedAssignation">
-        <inputExpression id="LiteralExpression_07gters" typeRef="string">
+        <inputExpression id="LiteralExpression_07gters" typeRef="boolean">
           <text></text>
         </inputExpression>
       </input>
       <input id="InputClause_114a400" label="haveAgreement" camunda:inputVariable="lesson.haveAgreement">
-        <inputExpression id="LiteralExpression_0isxg16" typeRef="string">
+        <inputExpression id="LiteralExpression_0isxg16" typeRef="boolean">
           <text></text>
         </inputExpression>
       </input>
@@ -120,15 +120,15 @@
     </informationRequirement>
     <decisionTable id="DecisionTable_18m9fze" hitPolicy="FIRST">
       <input id="InputClause_0p3vsfz" label="recallCount" camunda:inputVariable="lesson.recallCount">
-        <inputExpression id="LiteralExpression_0x8alc9" typeRef="double" />
+        <inputExpression id="LiteralExpression_0x8alc9" typeRef="integer" />
       </input>
       <input id="InputClause_1jblbu0" label="nonAnswerCount" camunda:inputVariable="lesson.nonAnswerCount">
-        <inputExpression id="LiteralExpression_1mphp8c" typeRef="double">
+        <inputExpression id="LiteralExpression_1mphp8c" typeRef="integer">
           <text></text>
         </inputExpression>
       </input>
       <output id="OutputClause_1hjgzny" label="normalWeight" name="normalWeight" typeRef="double" />
-      <output id="OutputClause_14vtf4e" label="deadlineWieght" name="deadlineWieght" typeRef="double" />
+      <output id="OutputClause_14vtf4e" label="deadlineWeight" name="deadlineWeight" typeRef="double" />
       <rule id="DecisionRule_0ongng4">
         <inputEntry id="UnaryTests_03ag8x2">
           <text>&gt;=0</text>
@@ -148,7 +148,7 @@
           <text>&gt; 0</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1irj1yd">
-          <text>&gt;=lesson.recallCount</text>
+          <text>&lt;=lesson.recallCount</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1vwdskv">
           <text>Coef*0.9</text>
@@ -169,6 +169,20 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0crir4p">
           <text>Coef*2</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0fj93n2">
+        <inputEntry id="UnaryTests_1r3c3f4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0k9jw3s">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xgkhtw">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0szecva">
+          <text></text>
         </outputEntry>
       </rule>
     </decisionTable>
@@ -214,7 +228,7 @@
           <text>normalWeight</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1p3v3bj">
-          <text>deadlineWieght</text>
+          <text>deadlineWeight</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_12f42k4">
@@ -234,27 +248,7 @@
           <text>normalWeight</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_17wqwz6">
-          <text>deadlineWieght</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_00ps0c5">
-        <inputEntry id="UnaryTests_1504oj2">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_08fj3hw">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0rlp53w">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_135tfvk">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_067psqg">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1rnqo6w">
-          <text></text>
+          <text>deadlineWeight</text>
         </outputEntry>
       </rule>
     </decisionTable>
