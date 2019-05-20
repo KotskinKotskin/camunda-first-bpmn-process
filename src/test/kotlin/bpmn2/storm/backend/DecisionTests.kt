@@ -67,7 +67,7 @@ class DecisionTests : CamundaBpmApiAwareTestCase() {
             var variables = putValue("lesson", lesson)
 
             val df2 = DecimalFormat("##.##")
-            df2.roundingMode = RoundingMode.HALF_DOWN
+          //  df2.roundingMode = RoundingMode.HALF_DOWN
 
             var result1 = df2.format(decisionTable.variables(variables).evaluate().singleResult["normalWeight"] as Double)
             var result2 = df2.format(decisionTable.variables(variables).evaluate().singleResult["deadlineWeight"] as Double)

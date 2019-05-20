@@ -32,7 +32,7 @@
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1i32yyd">
-          <text>1*2</text>
+          <text>1</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0vdte5t">
@@ -46,7 +46,7 @@
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0kbeweq">
-          <text>1</text>
+          <text>2</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0c0qoue">
@@ -60,7 +60,7 @@
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0ksto84">
-          <text>2</text>
+          <text>3</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_08b0nc6">
@@ -74,7 +74,7 @@
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_05iy6al">
-          <text>2</text>
+          <text>4</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0djejbx">
@@ -88,7 +88,7 @@
           <text>true</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_133od2h">
-          <text>3</text>
+          <text>5</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0w8zo32">
@@ -102,7 +102,7 @@
           <text>false</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1cwpaig">
-          <text>3</text>
+          <text>6</text>
         </outputEntry>
       </rule>
     </decisionTable>
