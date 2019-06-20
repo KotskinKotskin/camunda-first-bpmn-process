@@ -1,8 +1,0 @@
-№;in.lesson.recallCount;in.lesson.nonAnswerCount;in.taskResult;out.nextOperation
-1;2;3;LessonAssigned;Finish
-2;0;0;Recall;Again
-3;15;0;Recall;CycleEnded
-4;5;5;RecallWithAgreement;Again
-5;0;0;NonAnswer;Again
-6;0;15;NonAnswer;CycleEnded
-7;3;3;IncorrectService;IncorrectService

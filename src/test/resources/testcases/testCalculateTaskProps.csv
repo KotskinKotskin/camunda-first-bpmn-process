@@ -1,4 +1,0 @@
-№;in.lesson.firstCommunication;in.lesson.haveAgreemnt;in.lesson.failedAssignation;nontest.Coefficient;in.lesson.recallCount;in.lesson.nonAnswerCount;out.normalWeight;out.deadlineWeight;in.lesson.gradation;out.type;out.poolName
-1;FALSE;FALSE;FALSE;12;2;3;9.6;21.6;kid;IntrolessonAssignation;firstlineSales
-2;FALSE;FALSE;TRUE;11;0;0;11;22;kid;IntrolessonAssignation;firstlineSales
-3;FALSE;TRUE;TRUE;10;5;3;9;20;kid;IntrolessonAssignation;firstlineSales
