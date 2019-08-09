@@ -9,22 +9,13 @@ import javax.validation.constraints.NotNull
 
 
 @Document
-class Person (id: String?, firstName: String?, lastName: String? ) {
-    @Id
-    @Field
-     val id: String? = id
+data class Person (@Id @Field
+                   val id: String?,
+                   @Field
+                   val firstName: String?,
+                   @Field
+                   val lastName: String? ) {
 
-    @Field
-     val firstName: String? = firstName
-
-    @Field
-     val lastName: String? = lastName
-
-    @Field
-     val created: DateTime? = null
-
-    @Field
-     val updated: DateTime? = null
 
 
 }
