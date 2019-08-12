@@ -1,0 +1,151 @@
+<form role="form">
+
+    <script cam-script type="text/form-script">
+
+  camForm.on('form-loaded', function() {
+  camForm.variableManager.fetchVariable('application');
+});
+  camForm.on('variables-restored', function() {
+  $scope.dataObject = camForm.variableManager.variableValue('application');
+ });
+
+
+</script>
+
+    <h3>Trip info</h3>
+    <div class="control-group">
+        <label class="control-label" for="from">From*</label>
+        <div class="controls">
+            <input id="from"
+                   class="form-control"
+                   type="text"
+                   readonly
+                   ng-model="dataObject.from">
+        </div>
+        <br>
+        <label class="control-label" for="to">To*</label>
+        <div class="controls">
+            <input id="to"
+                   class="form-control"
+                   type="text"
+                   readonly
+                   ng-model="dataObject.to">
+        </div>
+        <br>
+
+        <label class="control-label" for="dateFrom">Date To*</label>
+        <p class="input-group">
+
+            <input id="dateFrom"
+                   type="text"
+                   cam-variable-name="dataObject.dateFrom"
+                   cam-variable-type="Date"
+                   class="form-control"
+                   datepicker-popup="yyyy-MM-dd'T'HH:mm:ss"
+                   readonly
+                   is-open="dateFieldOpened1" />
+
+            <span class="input-group-btn">
+    <button type="button"
+            class="btn btn-default"
+            ng-click="open1($event)">
+      <i class="glyphicon glyphicon-calendar"></i>
+    </button>
+  </span>
+        </p>
+
+        <p class="input-group">
+            <label class="control-label" for="dateTo">Date To*</label>
+            <input id="dateTo"
+                   type="text"
+                   cam-variable-name="dataObject.dateTo"
+                   cam-variable-type="Date"
+                   class="form-control"
+                   readonly
+                   datepicker-popup="yyyy-MM-dd'T'HH:mm:ss"
+                   is-open="dateFieldOpened2" />
+
+            <span class="input-group-btn">
+    <button type="button"
+            class="btn btn-default"
+            ng-click="open2($event)">
+      <i class="glyphicon glyphicon-calendar"></i>
+    </button>
+  </span>
+        </p>
+        <label class="control-label" for="reason">Reason*</label>
+        <br>
+        <textarea cam-variable-name="dataObject.reason"
+                  style="width:100%"
+                  readonly
+                  id="reason"
+                  cam-variable-type="String">
+</textarea>
+        <label class="control-label" for="employe">Employee*</label>
+        <div class="controls">
+            <input id="employe"
+                   class="form-control"
+                   type="text"
+                   readonly
+                   ng-model="dataObject.employee">
+        </div>
+        <label class="control-label" for="amount">Amount*</label>
+        <div class="controls">
+            <input id="amount"
+                   class="form-control"
+                   type="text"
+                   readonly
+                   cam-variable-type="Long"
+                   ng-model="dataObject.amount">
+        </div>
+        <hr>
+
+
+        <label class="control-label" for="tripReady">Trip ready*</label>
+        <br>
+        <input id="tripReady"
+               type="checkbox"
+                cam-variable-name="dataObject.tripReady"
+                cam-variable-type="Boolean">
+
+        <div  ng-show='dataObject.tripReady != true'>
+
+
+            <label class="control-label" for="tripProblem">Trip problem*</label>
+            <br>
+            <textarea cam-variable-name="dataObject.tripProblemComment"
+                      style="width:100%"
+                      
+                      id="tripProblem"
+                      cam-variable-type="String">
+</textarea>
+
+        </div>
+
+        <div  ng-show='dataObject.tripReady == true'>
+            <h3> Trip info</h3>
+                <hr>
+            <label class="control-label" for="flyDescription">Fly description*</label>
+            <br>
+            <textarea cam-variable-name="dataObject.flyDescription"
+                      style="width:100%"
+                      required
+                      id="flyDescription"
+                      cam-variable-type="String">
+</textarea>
+
+            <label class="control-label" for="hotelDescription">Hotel description*</label>
+            <br>
+            <textarea cam-variable-name="dataObject.hotelDescription"
+                      style="width:100%"
+                      required
+                      id="hotelDescription"
+                      cam-variable-type="String">
+</textarea>
+
+        </div>
+
+    </div>
+
+
+</form>
