@@ -1,0 +1,116 @@
+<form role="form">
+
+  <script cam-script type="text/form-script">
+   inject(['$rootScope', function($rootScope) {
+      $scope.userName = $rootScope.authentication.name;
+    }]);
+  $scope.open1 = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    $scope.dateFieldOpened1 = true;
+  };
+  $scope.open2 = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    $scope.dateFieldOpened2 = true;
+  };
+
+      var dataObject = $scope.dataObject = {
+         employee: $scope.userName
+      };
+  camForm.on('form-loaded', function() {
+    camForm.variableManager.createVariable({
+      name: 'application',
+      type: 'Object',
+      value: dataObject,
+      valueInfo: {
+        serializationDataFormat: 'application/json',
+        objectTypeName: 'bpmn2.storm.backend.model.BusinessTrip'
+      }
+    });
+  });
+</script>
+  <h3>Trip info</h3>
+    <div class="control-group">
+    <label class="control-label" for="from">From*</label>
+    <div class="controls">
+      <input id="from"
+             class="form-control"
+             type="text"
+             required
+             ng-model="dataObject.from">
+    </div>
+      <br>
+      <label class="control-label" for="to">To*</label>
+      <div class="controls">
+        <input id="to"
+               class="form-control"
+               type="text"
+               required
+               ng-model="dataObject.to">
+      </div>
+      <br>
+      <label class="control-label" for="dateFrom">Date To*</label>
+      <p class="input-group">
+        <input id="dateFrom"
+                type="text"
+               cam-variable-name="dataObject.dateFrom"
+               cam-variable-type="Date"
+               class="form-control"
+               datepicker-popup="yyyy-MM-dd'T'HH:mm:ss"
+               is-open="dateFieldOpened1" />
+        <span class="input-group-btn">
+    <button type="button"
+            class="btn btn-default"
+            ng-click="open1($event)">
+      <i class="glyphicon glyphicon-calendar"></i>
+    </button>
+  </span>
+      </p>
+      <p class="input-group">
+        <label class="control-label" for="dateTo">Date To*</label>
+        <input id="dateTo"
+                type="text"
+               cam-variable-name="dataObject.dateTo"
+               cam-variable-type="Date"
+               class="form-control"
+               datepicker-popup="yyyy-MM-dd'T'HH:mm:ss"
+               is-open="dateFieldOpened2" />
+        <span class="input-group-btn">
+    <button type="button"
+            class="btn btn-default"
+            ng-click="open2($event)">
+      <i class="glyphicon glyphicon-calendar"></i>
+    </button>
+  </span>
+      </p>
+      <label class="control-label" for="reason">Reason*</label>
+      <br>
+      <textarea cam-variable-name="dataObject.reason"
+                style="width:100%"
+                required
+                id="reason"
+                cam-variable-type="String">
+</textarea>
+      <label class="control-label" for="employee">Employee*</label>
+      <div class="controls">
+        <input id="employee"
+               class="form-control"
+               type="text"
+               required
+
+               ng-model="dataObject.employee">
+      </div>
+      <label class="control-label" for="amount">Amount*</label>
+      <div class="controls">
+        <input id="amount"
+               class="form-control"
+               type="text"
+               required
+               cam-variable-type="Long"
+               ng-model="dataObject.amount">
+      </div>
+  </div>
+</form>
